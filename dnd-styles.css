@@ -1,0 +1,12 @@
+.draggable-item {
+  padding: 16px;
+  margin-bottom: 8px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: grab;
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+}
