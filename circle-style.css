@@ -1,0 +1,17 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.circle {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  background-color: lightgray;
+  cursor: pointer;
+  margin: 15px;
+}
+
+.circle.selected {
+  background-color: lightskyblue;
+}
