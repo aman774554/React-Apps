@@ -10,7 +10,7 @@
   border-radius: 12px;
   background-color: aliceblue;
   display: grid;
-  gap: 24px;
+  grid-gap: 24px;
   padding: 24px;
   grid-template-columns: 20px auto;
 }
