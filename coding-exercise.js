@@ -1,3 +1,4 @@
+Mutability: Primitive types are immutable, while non-primitive types are mutable.
 ================================================================================================================================================================================
 Code 1: Remove Duplicate characters from String
 function removeDuplicateCharacters() {
@@ -9,5 +10,15 @@ function removeDuplicateCharacters() {
 }
 console.log(removeDuplicateCharacters());
 
-//OR
+//OR 
  console.log([... new Set(string)].join(""))
+
+//OR (in - index, of - word)
+var string='priya riya supriya'
+  arr = [];
+    for(let i of string){
+        if(!arr.includes(i)){
+            arr.push(i)
+        }
+    }
+    console.log(arr.join(""))
