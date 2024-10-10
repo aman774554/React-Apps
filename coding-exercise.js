@@ -43,3 +43,16 @@ function removeDuplicates(){
   return result;
 }
 console.log(removeDuplicates()) 
+
+================================================================================================================================================================================
+Code 6:String reverse without using inbult function
+
+function removeDuplicates(){
+   var string ="India is my country"
+  let result='';
+  for(let i=string.length-1; i>=0; i--){
+      result = result + string[i]; 
+      }
+  return result;
+}
+console.log(removeDuplicates()) 
