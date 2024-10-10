@@ -56,3 +56,17 @@ function removeDuplicates(){
   return result;
 }
 console.log(removeDuplicates()) 
+  
+================================================================================================================================================================================
+Code 7: Find factorial of user input number
+
+let num = parseInt(prompt("enter no."))
+fact = 1;
+if(num<0) console.log("Enter Positive number")
+else if(num===0) console.log(1)
+else{
+    for(let i=1; i<= num; i++){
+        fact *= i;
+    }
+}
+console.log(fact)
