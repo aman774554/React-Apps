@@ -70,3 +70,89 @@ else{
     }
 }
 console.log(fact)
+
+================================================================================================================================================================================
+Code 9: Swapping of 2 numbers with third variable
+let a = 1;
+let b = 2;
+let c = b;
+b=a;
+a=c;
+console.log(a,b)
+  
+================================================================================================================================================================================
+Code 10: Swapping of 2 numbers without third variable
+let a=10; 
+let b=20;
+   a=a+b //30
+   b=a-b //10
+   a=a-b //20
+console.log (a,b)
+
+================================================================================================================================================================================
+Code 11: To check the string or number is palindrome or not( ex: 121,madam,anna) using reverse method
+let str = prompt("Enter string: ")
+let reveredString = str.split('').reverse().join('');
+console.log(reveredString)
+if(str === reveredString){
+    console.log("yes")
+}
+else{
+    console.log("no")
+}
+================================================================================================================================================================================
+Code 12: To check the string or number is palindrome or not( ex: 121,madam,anna) using diving length by 2 and then comparing
+function checkPalindrome(){
+   const string = "12321"
+   let len = string.length;
+   for (i=0; i<len/2;i++){
+     if (string[i]!==string[len-1-i]){
+         console.log("Not Palindrome")
+     }
+     else{
+         console.log(" Palindrome")
+    }
+   }
+}
+checkPalindrome()
+  
+================================================================================================================================================================================
+Code 14: To find longest word from a string using functions
+   const string = "a bb ccc"
+   const longestWord = string.split(" ").sort((a,b)=>{ return b.length-a.length})
+   console.log(longestWord[0])
+     
+================================================================================================================================================================================
+Code 13: To find longest word from a string using (for of) /*for(var i=0; i>=num; i++) means iterate by indexing*/  /*for (var word of words) means iterate by an elements not 
+by indexing*/
+function longestWord(){
+   let string = "supriya is a masooooom good girl"
+   var words= string.split(' ')
+   var longest=" "
+   for(var word of words){
+        console.log(word)
+        if (word.length > longest.length)
+        {
+            longest=word;
+         }
+   }
+    return longest.length
+}
+longestWord()
+---------------------------
+function longestWord(){
+   let string = "supriya is a hahahahaha good girl"
+   var arr= string.split(' ')
+   var longest=" "
+   for(var i=0; i<arr.length; i++){
+      
+        if (arr[i].length > longest.length)
+        {
+            longest=arr[i];
+        }
+   }
+   return longest
+}
+console.log(longestWord())
+
+   
