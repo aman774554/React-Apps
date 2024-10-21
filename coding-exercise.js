@@ -155,4 +155,14 @@ function longestWord(){
 }
 console.log(longestWord())
 
-   
+================================================================================================================================================================================
+Code 17: To find vowels and its count in a given string
+let str = "aaeioux"
+const vowels = ['a','e','i','o','u']
+let words=""
+for (let i of str){
+    if (vowels.includes(i)){
+        words = words.concat(i)
+    }
+}
+console.log(words.length)
