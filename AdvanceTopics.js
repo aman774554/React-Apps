@@ -124,3 +124,69 @@ import { useLocation } from 'react-router-dom';
             <p>Search Params: {location.search}</p>
         </div>
     );
+===================================================================================================
+  custom hooks
+===================================================================================================
+Custom Hooks in React are reusable functions that allow you to encapsulate and share logic between
+components. They are a way to reuse stateful logic without duplicating code across multiple components.
+Custom hooks start with the prefix "use" to follow React’s naming convention and ensure that they work
+correctly with the rules of hooks.
+
+
+  1. Custom Hook: useFetch
+--------------------------------
+import { useState, useEffect } from 'react';
+
+// Create a custom hook for fetching data
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Fetch the data
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
+}
+
+export default useFetch;
+
+2. Using the Custom Hook in a Component:
+--------------------------------------------
+import React from 'react';
+import useFetch from './useFetch';
+
+function UserList() {
+  const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/users');
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <ul>
+      {data.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default UserList;
+
