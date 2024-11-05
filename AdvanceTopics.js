@@ -189,4 +189,14 @@ function UserList() {
 }
 
 export default UserList;
-
+==================================================================================
+When to Use Each:
+==================================================================================
+useMemo: Use when you have a heavy computation inside a component (e.g., filtering, sorting, calculating derived data) 
+and want to avoid recalculating it on every render.
+  
+React.memo: Use when you want to prevent a functional component from re-rendering unnecessarily when its props haven’t 
+changed.
+  
+useCallback: Use when you pass functions as props to child components, and you want to prevent the child components from 
+re-rendering due to the function reference changing.
