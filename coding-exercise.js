@@ -166,3 +166,20 @@ for (let i of str){
     }
 }
 console.log(words.length)
+================================================================================================================================================================================
+Code 18: To find char in string
+
+const str = "hello world";
+const count = str.split("o").length - 1;
+console.log(count); // Output: 2
+
+const str = "hello world";
+const count = (str.match(/o/g) || []).length;
+console.log(count); // Output: 2
+
+const str = "hello world";
+const i = "o"; // Variable to search for
+const count = (str.match(new RegExp(i, "g")) || []).length;
+console.log(count); // Output: 2
+
+
