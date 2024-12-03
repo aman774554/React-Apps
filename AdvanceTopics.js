@@ -4,7 +4,7 @@
     
 In React, useCallback is a hook that helps you optimize the performance of your components by memoizing (i.e., caching) a callback function.
 This means that React will return the same instance of the function if the dependencies you provide haven't changed, preventing
-unnecessary re-creations of the function on every render.
+unnecessary re-creations of the function on every render. (Function also recreated when updated, usecallback avoid this)
 
   const memoizedCallback = useCallback(() => {
   // Your callback logic here
