@@ -1,14 +1,14 @@
 function getUser(callback) {
   setTimeout(() => {
     console.log("Fetched user data");
-    callback({ userId: 1, name: "John" });
+    callback({ userId: 1, name: "Aman" });
   }, 1000);
 }
 
-function getOrders(userId, callback) {
+function getOrder(userId, callback) {
   setTimeout(() => {
-    console.log(`Fetched orders for userId ${userId}`);
-    callback([{ orderId: 101 }, { orderId: 102 }]);
+    console.log(`Fetched order for userId ${userId}`);
+    callback({ orderId: 101 });
   }, 1000);
 }
 
@@ -19,13 +19,64 @@ function getOrderDetails(orderId, callback) {
   }, 1000);
 }
 
-// Nesting of callbacks (Callback Hell)
+// Simplified callback nesting
 getUser((user) => {
-  getOrders(user.userId, (orders) => {
-    orders.forEach((order) => {
-      getOrderDetails(order.orderId, (orderDetails) => {
-        console.log(orderDetails);
-      });
+  getOrder(user.userId, (order) => {
+    getOrderDetails(order.orderId, (orderDetails) => {
+      console.log(orderDetails);
     });
   });
 });
+
+
+###########################################################################
+async function fetchOrderDetails() {
+  try {
+    const user = await getUser();
+    const order = await getOrder(user.userId);
+    const orderDetails = await getOrderDetails(order.orderId);
+    console.log(orderDetails);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+fetchOrderDetails();
+
+################################################################################
+
+function getUser() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Fetched user data");
+      resolve({ userId: 1, name: "John" });
+    }, 1000);
+  });
+}
+
+function getOrder(userId) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Fetched order for userId ${userId}`);
+      resolve({ orderId: 101 });
+    }, 1000);
+  });
+}
+
+function getOrderDetails(orderId) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Fetched details for orderId ${orderId}`);
+      resolve({ orderId, details: "Order details here" });
+    }, 1000);
+  });
+}
+
+// Chaining Promises
+getUser()
+  .then((user) => getOrder(user.userId))
+  .then((order) => getOrderDetails(order.orderId))
+  .then((orderDetails) => {
+    console.log(orderDetails);
+  })
+  .catch((error) => console.error("Error:", error));
