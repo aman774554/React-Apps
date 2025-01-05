@@ -80,3 +80,27 @@ getUser()
     console.log(orderDetails);
   })
   .catch((error) => console.error("Error:", error));
+
+##################################################################
+Promise hell
+
+getUser()
+  .then((user) => {
+    getOrder(user.userId)
+      .then((order) => {
+        getOrderDetails(order.orderId)
+          .then((details) => {
+            console.log(details);
+          })
+          .catch((err) => {
+            console.error("Error fetching order details:", err);
+          });
+      })
+      .catch((err) => {
+        console.error("Error fetching order:", err);
+      });
+  })
+  .catch((err) => {
+    console.error("Error fetching user:", err);
+  });
+
