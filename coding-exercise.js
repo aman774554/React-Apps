@@ -182,4 +182,42 @@ const i = "o"; // Variable to search for
 const count = (str.match(new RegExp(i, "g")) || []).length;
 console.log(count); // Output: 2
 
+===========================================================================================================================
+console.log(arr.join('').toString().split('').sort((a,b)=>b-a).join('')) 8210
+
+const largestNumber = arr
+  .map(num => num.toString())
+  .sort((a, b) => (b + a).localeCompare(a + b))
+  .join('');
+
+console.log(largestNumber); // Output: "8201"
+===========================================================================================================================
+function fibonacci(n) {
+  let fib = [0, 1]; // Initialize the first two numbers of the Fibonacci series
+  
+  for (let i = 2; i < n; i++) {
+    fib[i] = fib[i - 1] + fib[i - 2]; // Add the previous two numbers to get the next one
+  }
+  
+  return fib.slice(0, n); // Return the first n Fibonacci numbers
+}
+
+console.log(fibonacci(10)); // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+-----
+
+  function fibonacciRecursive(n) {
+  if (n <= 1) {
+    return n;
+  }
+  return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+}
+
+let n = 10;
+let fib = [];
+for (let i = 0; i < n; i++) {
+  fib.push(fibonacciRecursive(i));
+}
+
+console.log(fib); // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
