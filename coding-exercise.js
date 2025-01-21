@@ -221,3 +221,27 @@ for (let i = 0; i < n; i++) {
 
 console.log(fib); // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
+==========================================================================================================================
+code 21: Longest Substring 
+function longestSubstring(str) {
+  let longest = '';
+  let current = '';
+
+  for (let char of str) {
+    if (current.includes(char)) {
+      // If character repeats, start a new substring from the character after the repeated one
+      current = current.slice(current.indexOf(char) + 1);
+      console.log(current)
+    }
+    current += char;
+    longest = current.length > longest.length ? current : longest;
+  }
+
+  return longest;
+}
+
+console.log(longestSubstring("abcabcbb")); // Output: 3 (substring "abc")
+console.log(longestSubstring("bbbbb"));    // Output: 1 (substring "b")
+console.log(longestSubstring("pwwkew"));   // Output: 3 (substring "wke")
+
+=============================================================================================================
