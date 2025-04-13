@@ -1,11 +1,4 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
-}
-
 .box {
-  height: auto;
-  width: auto;
   border: 1px solid black;
   border-radius: 12px;
   background-color: aliceblue;
@@ -17,9 +10,11 @@
 
 .left {
   font-size: 48px;
-  flex: 5%;
 }
 
+.right {
+  text-align: justify;
+}
 .item-3 {
   grid-column: 1 / span 2;
   text-align: justify;
