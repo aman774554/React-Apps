@@ -40,11 +40,10 @@ import { useState, useEffect } from 'react';
 export function App(props) {
   const [second, setSecond] = useState(3);
   useEffect(() => {
-    if (second > 0) {
+    if (second === 0) return;
       var interval = setInterval(() => {
         setSecond(prev => prev - 1);
       }, 1000);
-    }
     return () => clearInterval(interval);
   }, [second]);
   return (
