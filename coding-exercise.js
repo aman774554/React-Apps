@@ -183,14 +183,16 @@ const count = (str.match(new RegExp(i, "g")) || []).length;
 console.log(count); // Output: 2
 
 ===========================================================================================================================
-console.log(arr.join('').toString().split('').sort((a,b)=>b-a).join('')) 8210
+arr = [1,34,3]
+
+console.log(arr.join('').toString().split('').sort((a,b)=>b-a).join('')) //4331
 
 const largestNumber = arr
   .map(num => num.toString())
   .sort((a, b) => (b + a).localeCompare(a + b))
   .join('');
 
-console.log(largestNumber); // Output: "8201"
+console.log(largestNumber); // Output: 3431
 ===========================================================================================================================
 function fibonacci(n) {
   let fib = [0, 1]; // Initialize the first two numbers of the Fibonacci series
