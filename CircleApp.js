@@ -22,6 +22,7 @@ export default function App() {
       <br />
       <br />
       {`Total count: ${count}`}
+// Used () in jsx not {} && print index directly not {index}
       {Array.from({ length: count }).map((_, index) => (
         <div
           key={index}
