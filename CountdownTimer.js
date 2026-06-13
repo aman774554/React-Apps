@@ -5,6 +5,9 @@ export default function App() {
   const [seconds, setSeconds] = useState(10);
   const [active, setActive] = useState(false);
 
+  // In React Strict Mode development builds, React mounts, unmounts, and mounts again to expose bugs like missing cleanup functions. 
+  // Without clearInterval, you end up with multiple intervals running simultaneously
+
   useEffect(() => {
     let interval = null;
     if (active && seconds > 0) {
