@@ -56,7 +56,7 @@ console.log(null === undefined); // false
 console.log(NaN === NaN);        // false
 ```
 
-**Explanation:** `==` (loose equality) performs **type coercion** before comparing, converting operands to the same type. `===` (strict equality) compares both **value and type** without coercion. Best practice is to always use `===` to avoid unexpected coercion bugs.
+**Explanation:** `==` (loose equality) performs **type coercion** before comparing, converting operands to the same type. `===` (strict equality) compares both **value and type** without coercion. Best practice is to always use `===` to avoid unexpected coercion bugs. According to the IEEE 754 floating-point standard (which JavaScript follows), any comparison involving NaN returns false.
 
 ---
 
