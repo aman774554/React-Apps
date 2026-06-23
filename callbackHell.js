@@ -1,4 +1,4 @@
-#Callback hell 
+# Callback hell 
 function getUser(callback) {
   setTimeout(() => {
     callback("Aman");
