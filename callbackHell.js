@@ -1,106 +1,75 @@
+#Callback hell 
 function getUser(callback) {
   setTimeout(() => {
-    console.log("Fetched user data");
-    callback({ userId: 1, name: "Aman" });
+    callback("Aman");
   }, 1000);
 }
 
-function getOrder(userId, callback) {
+function getOrder(user, callback) {
   setTimeout(() => {
-    console.log(`Fetched order for userId ${userId}`);
-    callback({ orderId: 101 });
+    callback("Order-101");
   }, 1000);
 }
 
-function getOrderDetails(orderId, callback) {
+function getDetails(order, callback) {
   setTimeout(() => {
-    console.log(`Fetched details for orderId ${orderId}`);
-    callback({ orderId, details: "Order details here" });
+    callback("Laptop");
   }, 1000);
 }
 
-// Simplified callback nesting
 getUser((user) => {
-  getOrder(user.userId, (order) => {
-    getOrderDetails(order.orderId, (orderDetails) => {
-      console.log(orderDetails);
+  getOrder(user, (order) => {
+    getDetails(order, (details) => {
+      console.log(user, order, details);
     });
   });
 });
 
 
 ###########################################################################
-async function fetchOrderDetails() {
-  try {
-    const user = await getUser();
-    const order = await getOrder(user.userId);
-    const orderDetails = await getOrderDetails(order.orderId);
-    console.log(orderDetails);
-  } catch (error) {
-    console.error("Error:", error);
-  }
+# Async/Await
+function getUser() {
+  return Promise.resolve("Aman");
 }
 
-fetchOrderDetails();
+function getOrder(user) {
+  return Promise.resolve("Order-101");
+}
 
+function getDetails(order) {
+  return Promise.resolve("Laptop");
+}
+
+async function fetchData() {
+  const user = await getUser();
+  const order = await getOrder(user);
+  const details = await getDetails(order);
+
+  console.log(user);
+  console.log(order);
+  console.log(details);
+}
+
+fetchData();
 ################################################################################
+#Promise
 
 function getUser() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log("Fetched user data");
-      resolve({ userId: 1, name: "John" });
-    }, 1000);
-  });
+  return Promise.resolve("Aman");
 }
 
-function getOrder(userId) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(`Fetched order for userId ${userId}`);
-      resolve({ orderId: 101 });
-    }, 1000);
-  });
+function getOrder(user) {
+  return Promise.resolve("Order-101");
 }
 
-function getOrderDetails(orderId) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(`Fetched details for orderId ${orderId}`);
-      resolve({ orderId, details: "Order details here" });
-    }, 1000);
-  });
+function getDetails(order) {
+  return Promise.resolve("Laptop");
 }
 
-// Chaining Promises
 getUser()
-  .then((user) => getOrder(user.userId))
-  .then((order) => getOrderDetails(order.orderId))
-  .then((orderDetails) => {
-    console.log(orderDetails);
-  })
-  .catch((error) => console.error("Error:", error));
+  .then((user) => getOrder(user))
+  .then((order) => getDetails(order))
+  .then((details) => console.log(details))
+  .catch((err) => console.log(err));
 
 ##################################################################
-Promise hell
-
-getUser()
-  .then((user) => {
-    getOrder(user.userId)
-      .then((order) => {
-        getOrderDetails(order.orderId)
-          .then((details) => {
-            console.log(details);
-          })
-          .catch((err) => {
-            console.error("Error fetching order details:", err);
-          });
-      })
-      .catch((err) => {
-        console.error("Error fetching order:", err);
-      });
-  })
-  .catch((err) => {
-    console.error("Error fetching user:", err);
-  });
-
